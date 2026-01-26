@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/crud/dbfile.dart';
 import "package:todo_app/screens/home_page.dart";
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await TodoDatabase.init();
   runApp(const MainApp());
 }
 
