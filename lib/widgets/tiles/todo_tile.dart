@@ -11,6 +11,7 @@ class TodoTile extends StatelessWidget {
     required this.taskCompleted,
     required this.onChanged,
   });
+  
 
   @override
   Widget build(BuildContext context) {
