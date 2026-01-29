@@ -5,63 +5,67 @@ class Completedtasklist extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: 3,
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        itemBuilder: (context , index){
-          return Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Card(
-                  elevation: 3,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12) ,
-                  ),
-                  color: Colors.white,
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: ListTile(
-                      title: Text("Review Project X \nDocumentation and Provide", style: TextStyle(color: Colors.black54 , fontSize: 20 , fontWeight: FontWeight.w600),),
-                      trailing: Icon(Icons.repeat , color: Colors.blue, size: 25,),
-                      subtitle: Row(
-                        children: [
-                          SizedBox(
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade100 ,
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Text("Work" , style: TextStyle(fontSize: 12),),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 12,) ,
-                          SizedBox(
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade100 ,
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Text("Completed on 2023-04-15" , style: TextStyle(fontSize: 12),),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        double width = constraints.maxWidth;
 
+        return ListView.builder(
+          itemCount: 3,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) {
+            return Card(
+              elevation: 3,
+              margin: const EdgeInsets.symmetric(vertical: 8),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: ListTile(
+                  title: Text(
+                    "Review Project X \nDocumentation and Provide",
+                    style: TextStyle(
+                      fontSize: width * 0.045,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black54,
                     ),
                   ),
-                )
-              ],
-            ),
-          );
+                  trailing: Icon(
+                    Icons.repeat,
+                    size: width * 0.06,
+                    color: Colors.blue,
+                  ),
+                  subtitle: Padding(
+                    padding: const EdgeInsets.only(top: 6),
+                    child: Row(
+                      children: [
+                        _chip("Work", width),
+                        const SizedBox(width: 12),
+                        _chip("Completed on 2023-04-15", width),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
 
-    });
+  Widget _chip(String text, double width) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade100,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(fontSize: width * 0.035),
+      ),
+    );
   }
 }
