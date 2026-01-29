@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/screens/new_task_screen.dart';
 import 'package:todo_app/widgets/homeWidgets/circularProgrssbar.dart';
 import 'package:todo_app/widgets/homeWidgets/completedtaskList.dart';
 import 'package:todo_app/widgets/homeWidgets/listviewHome.dart';
@@ -10,7 +11,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Navigator.push(context, CupertinoPageRoute(builder: (context) => NewTaskScreen()));
+      } , shape: CircleBorder(), child: Icon(Icons.add , color: Colors.deepPurpleAccent,),),
       appBar: AppBar(
+
         leadingWidth: MediaQuery.of(context).size.width * 0.35,
         leading: Row(
           mainAxisSize: MainAxisSize.min,
