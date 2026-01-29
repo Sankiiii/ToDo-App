@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:todo_app/widgets/homeWidgets/circularProgrssbar.dart';
 import 'package:todo_app/widgets/homeWidgets/completedtaskList.dart';
 import 'package:todo_app/widgets/homeWidgets/listviewHome.dart';
@@ -12,20 +11,20 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leadingWidth: 140,
+        leadingWidth: MediaQuery.of(context).size.width * 0.35,
         leading: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
               "img/img.png",
-              height: 30,
+              height:  MediaQuery.of(context).size.width * 0.07,
             ),
             const SizedBox(width: 6),
-            const Text(
+             Text(
               "Hub",
               style: TextStyle(
                 color: Colors.blue,
-                fontSize: 26,
+                fontSize: MediaQuery.of(context).size.width * 0.06,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -34,10 +33,10 @@ class HomePage extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
         elevation: 4,
-        title: Text("The Hub" , style: TextStyle(color: Colors.black , fontWeight: FontWeight.w600 , fontSize: 24),),
+        title: Text("The Hub" , style: TextStyle(color: Colors.black , fontWeight: FontWeight.w600 , fontSize: MediaQuery.of(context).size.width * 0.055,),),
         actions: [
           IconButton(onPressed: (){},
-              icon: Icon(Icons.settings , color: Colors.black, size: 30,))
+              icon: Icon(Icons.settings , color: Colors.black, size: MediaQuery.of(context).size.width * 0.07,))
         ],
       ),
 

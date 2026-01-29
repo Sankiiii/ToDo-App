@@ -5,52 +5,60 @@ class ListviewHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount : 10 ,
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      itemBuilder : (context , index) {
-        return Column(
-          children: [
-            Card(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        double width = constraints.maxWidth;
+
+        return ListView.builder(
+          itemCount: 10,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) {
+            return Card(
               elevation: 3,
-              color: Colors.white,
+              margin: const EdgeInsets.symmetric(vertical: 8),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12) ,
+                borderRadius: BorderRadius.circular(12),
               ),
-              child:Padding(
-                padding: const EdgeInsets.all(15.0),
+              child: Padding(
+                padding: const EdgeInsets.all(15),
                 child: ListTile(
-                  title: const Text("Plan Q3 Marketing Campaign Strategy"  , style: TextStyle(color: Colors.black87 , fontWeight: FontWeight.w600 , fontSize: 20),),
-                  trailing: const Icon(
+                  title: Text(
+                    "Plan Q3 Marketing Campaign Strategy",
+                    style: TextStyle(
+                      fontSize: width * 0.045,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  trailing: Icon(
                     Icons.check_circle_outline,
-                    size: 25,
+                    size: width * 0.065,
                     color: Colors.black,
                   ),
                   subtitle: Padding(
                     padding: const EdgeInsets.only(top: 6),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Text(
-                          "Work",
-                          style: TextStyle(fontSize: 12),
-                        ),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Text(
+                        "Work",
+                        style: TextStyle(fontSize: width * 0.035),
                       ),
                     ),
                   ),
-
                 ),
               ),
-            )
-          ],
+            );
+          },
         );
-      }
+      },
     );
   }
 }

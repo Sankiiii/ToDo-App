@@ -4,29 +4,32 @@ class Circularprogrssbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Stack(
+    return LayoutBuilder(
+      builder: (context , constraints){
+        double size = constraints.maxWidth * 0.45;
+
+      return Stack(
           alignment: Alignment.center,
           children: [
             SizedBox(
-              height : MediaQuery.of(context).size.width/3,
-              width: MediaQuery.of(context).size.width/3,
+              height: size *2,
+              width: size *2,
               child: CircularProgressIndicator(
                 value: 0.25,
                 valueColor: AlwaysStoppedAnimation(Colors.blue),
                 backgroundColor: Colors.grey,
-                strokeWidth: 14,
+                strokeWidth: size * 0.1,
               ),
             ),
             Center(
                 child: Text("25 %" ,
-                  style: const TextStyle(
-                    fontSize: 32,
+                  style: TextStyle(
+                    fontSize: size * 0.50,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),)  )
           ]
-      ),
+      );}
     );
   }
 }
